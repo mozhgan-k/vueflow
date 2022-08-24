@@ -2,7 +2,7 @@
 
 <template>
   <q-page class="flex flex-center q-py-md">
-    <div style="width: 700px; height: 700px">
+    <div style="width: 800px; height: 500px">
       <VueFlow
         v-model="elements"
         class="customnodeflow"
@@ -13,10 +13,10 @@
         :default-zoom="1.5"
         :fit-view-on-init="true"
       >
-        <template #node-custom="props">
-          <CustomNode @change="onChange" @gradient="onGradient" :data="props.data"/>
-        </template>
-        <MiniMap :node-stroke-color="nodeStroke" :node-color="nodeColor"/>
+        <div class="q-mt-md q-mx-md" style="width: 250px;">
+          <CustomNode @change="onChange" @gradient="onGradient" :data="elements"/>
+        </div>
+<!--        <MiniMap :node-stroke-color="nodeStroke" :node-color="nodeColor"/>-->
       </VueFlow>
     </div>
   </q-page>
@@ -25,19 +25,23 @@
 <script>
 import { defineComponent, ref, computed, h } from 'vue'
 import CustomNode from 'components/customNode'
-import { MiniMap, VueFlow, useVueFlow, Position, ConnectionMode } from '@braks/vue-flow'
+import { VueFlow, useVueFlow, Position, ConnectionMode } from '@braks/vue-flow'
 import { presets } from 'src/store/presets'
 
 export default defineComponent({
   name: 'IndexPage',
   components: {
     CustomNode,
-    MiniMap,
+    // MiniMap,
     VueFlow
+  },
+  data () {
+    return {
+      elements: []
+    }
   },
   setup () {
     const { getNode } = useVueFlow()
-    const elements = ref([])
     const bgColor = ref(presets.byakuroku)
     const bgName = ref('byakuroku')
     const gradient = ref(false)
@@ -58,23 +62,8 @@ export default defineComponent({
     }
     const outputColorLabel = () => h('div', {}, bgColor.value)
     const outputNameLabel = () => h('div', {}, bgName.value)
-    const onChange = (color) => {
-      gradient.value = false
-      bgColor.value = color.value
-      bgName.value = color.name
-
-      outputColorNode.value.hidden = false
-    }
-    const onGradient = () => {
-      gradient.value = true
-      bgColor.value = null
-      bgName.value = 'gradient'
-
-      outputColorNode.value.hidden = true
-    }
     return{
       getNode,
-      elements,
       outputColorNode,
       gradient,
       bgColor,
@@ -84,13 +73,11 @@ export default defineComponent({
       nodeColor,
       connection_mode,
       outputNameLabel,
-      outputColorLabel,
-      onChange,
-      onGradient
+      outputColorLabel
     }
   },
   mounted () {
-    this.elements.value = [
+    this.elements = [
       {
         id: '1',
         type: 'custom',
@@ -134,6 +121,22 @@ export default defineComponent({
         })
       }
     ]
+  },
+  methods: {
+    onChange (color) {
+      this.gradient.value = false
+      this.bgColor.value = color.value
+      this.bgName.value = color.name
+
+      this.outputColorNode.value.hidden = false
+    },
+    onGradient () {
+      this.gradient.value = true
+      this.bgColor.value = null
+      this.bgName.value = 'gradient'
+
+      this.outputColorNode.value.hidden = true
+    }
   }
 })
 </script>

@@ -73,6 +73,7 @@ module.exports = {
 
     'prefer-promise-reject-errors': 'off',
     'camelcase': 'off',
+    'prefer-const': 'off',
     'indent': 'off',
     'keyword-spacing': [0, { 'before': false, 'after': false }],
     // allow debugger during development only

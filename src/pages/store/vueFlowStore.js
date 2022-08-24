@@ -8,6 +8,7 @@ const mutations = {
     debugger
   }
 }
+
 const actions = {
   nodeElements: ({ commit }, nodeElements) => {
     commit('nodeElements', nodeElements)

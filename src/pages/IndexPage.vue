@@ -1,3 +1,5 @@
+//custom node
+
 <template>
   <q-page class="flex flex-center q-py-md">
     <div style="width: 700px; height: 700px">

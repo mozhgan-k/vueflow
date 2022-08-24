@@ -1,6 +1,8 @@
+//empty flows with vuex
+
 <template>
   <div style="width: 700px; height: 700px" class="q-py-md">
-    <VueFlow v-model="store.nodeElements">
+    <VueFlow v-model="nodeElements">
       <MiniMap />
       <Controls />
       <Background :variant="backgroundVariant.Lines" />
@@ -13,7 +15,7 @@
 
 <script>
 import { VueFlow, useVueFlow, BackgroundVariant, Background, Controls, MiniMap } from '@braks/vue-flow'
-import { useStore } from 'vuex'
+import { mapState, useStore } from 'vuex'
 export default {
   name: 'emptyNode',
   components: {
@@ -37,7 +39,7 @@ export default {
         position: { x: Math.random() * dimensions.value.width, y: Math.random() * dimensions.value.height }
       }
       addNodes([newNode])
-      store.dispatch(newNode)
+      store.dispatch('nodeElements', newNode)
     }
     return {
       nodes,
@@ -52,6 +54,11 @@ export default {
       backgroundVariant,
       store
     }
+  },
+  computed: {
+    ...mapState({
+      nodeElements: state => state.vueFlowStore.nodeElements // get stored nodes
+    })
   }
 }
 </script>

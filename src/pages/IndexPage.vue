@@ -1,5 +1,5 @@
 <template>
-  <q-page class="flex flex-center">
+  <q-page class="flex flex-center q-py-md">
     <div style="width: 700px; height: 700px">
       <VueFlow
         v-model="elements"
@@ -12,7 +12,7 @@
         :fit-view-on-init="true"
       >
         <template #node-custom="props">
-          <customNode @change="onChange" @gradient="onGradient" :data="props.data"/>
+          <CustomNode @change="onChange" @gradient="onGradient" :data="props.data"/>
         </template>
         <MiniMap :node-stroke-color="nodeStroke" :node-color="nodeColor"/>
       </VueFlow>
@@ -22,22 +22,22 @@
 
 <script>
 import { defineComponent, ref, computed, h } from 'vue'
-import customNode from 'components/customNode'
+import CustomNode from 'components/customNode'
 import { MiniMap, VueFlow, useVueFlow, Position, ConnectionMode } from '@braks/vue-flow'
 import { presets } from 'src/store/presets'
 
 export default defineComponent({
   name: 'IndexPage',
   components: {
-    customNode,
+    CustomNode,
     MiniMap,
     VueFlow
   },
   setup () {
     const { getNode } = useVueFlow()
     const elements = ref([])
-    const bgColor = ref(presets.ichigo)
-    const bgName = ref('inchigo')
+    const bgColor = ref(presets.byakuroku)
+    const bgName = ref('byakuroku')
     const gradient = ref(false)
     const connection_mode = ConnectionMode
     const connectionLineStyle = { stroke: '#fff' }

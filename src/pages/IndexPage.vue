@@ -2,7 +2,7 @@
 
 <template>
   <q-page class="flex flex-center q-py-md">
-    <div style="width: 800px; height: 500px">
+    <div style="width: 100%; height: 500px">
       <VueFlow
         v-model="elements"
         class="customnodeflow"
@@ -13,9 +13,7 @@
         :default-zoom="1.5"
         :fit-view-on-init="true"
       >
-        <div class="q-mt-md q-mx-md" style="width: 250px;">
           <CustomNode @change="onChange" @gradient="onGradient" :data="elements"/>
-        </div>
 <!--        <MiniMap :node-stroke-color="nodeStroke" :node-color="nodeColor"/>-->
       </VueFlow>
     </div>
@@ -37,6 +35,7 @@ export default defineComponent({
   },
   data () {
     return {
+      gradient: false,
       elements: [
         {
           id: '1',
@@ -65,7 +64,7 @@ export default defineComponent({
           target: '2',
           animated: true,
           style: () => ({
-            stroke: this.bgColor.value,
+            stroke: this.bgColor,
             filter: 'invert(100%)'
           })
         },
@@ -74,9 +73,9 @@ export default defineComponent({
           source: '1',
           sourceHandle: 'b',
           target: '3',
-          animated: true,
+          animated: false,
           style: () => ({
-            stroke: this.bgColor.value,
+            stroke: this.bgColor,
             filter: 'invert(100%)'
           })
         }
@@ -87,11 +86,11 @@ export default defineComponent({
     const { getNode } = useVueFlow()
     const bgColor = ref(presets.byakuroku)
     const bgName = ref('byakuroku')
-    const gradient = ref(false)
     const connection_mode = ConnectionMode
     const connectionLineStyle = { stroke: '#fff' }
     const outputColorNode = computed(() => {
-      return getNode.value('3')
+      const node = getNode.value('3')
+      return node
     })
     const nodeStroke = (n) => {
       if (n.type === 'input') return presets.fuji
@@ -108,7 +107,6 @@ export default defineComponent({
     return{
       getNode,
       outputColorNode,
-      gradient,
       bgColor,
       bgName,
       connectionLineStyle,
@@ -121,18 +119,18 @@ export default defineComponent({
   },
   methods: {
     onChange (color) {
-      this.gradient.value = false
-      this.bgColor.value = color.value
-      this.bgName.value = color.name
+      this.gradient = false
+      this.bgColor = color.value
+      this.bgName = color.name
 
-      this.outputColorNode.value.hidden = false
+      // this.outputColorNode.value.hidden = false
     },
     onGradient () {
-      this.gradient.value = true
-      this.bgColor.value = null
-      this.bgName.value = 'gradient'
+      this.gradient = true
+      this.bgColor = null
+      this.bgName = 'gradient'
 
-      this.outputColorNode.value.hidden = true
+      // this.outputColorNode.value.hidden = true
     }
   }
 })

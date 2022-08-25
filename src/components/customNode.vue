@@ -1,12 +1,16 @@
 <template>
-  <q-card class="bg-white q-pa-sm" flat>
+  <q-card class="bg-white q-pa-sm absolute" flat style="width: 250px; z-index: 100">
     <div>Select a color</div>
     <div class="custom-component">
       <div v-for="color of colors" :key="color.name">
-        <q-btn round @click="select(color)" :title="color.name" :style="{ backgroundColor: color.value }" type="button"
-                ></q-btn>
+        <button
+               @click="onSelect(color)"
+               :title="color.name"
+               :style="{ backgroundColor: color.value }"
+               type="button"
+        ></button>
       </div>
-      <q-btn round class="animated-bg-gradient" title="gradient" type="button" @click="onGradient"></q-btn>
+      <button class="animated-bg-gradient" title="gradient" type="button" @click="onGradient"></button>
     </div>
     <Handle id="a" type="source" :position="position.Right" :style="sourceHandleStyleA"/>
     <Handle id="b" type="source" :position="position.Right" :style="sourceHandleStyleB"/>
@@ -54,7 +58,7 @@ export default {
       debugger
       return colors.value.find((color) => color.value === color.data.color)
     })
-    const select = (color) => {
+    const onSelect = (color) => {
       emit('change', color)
     }
     const onGradient = () => {
@@ -62,13 +66,12 @@ export default {
     }
     return {
       colors,
-      // selectedColor,
+      selectedColor,
       sourceHandleStyleB,
       sourceHandleStyleA,
       position,
       onGradient,
-      select,
-      selectedColor
+      onSelect
     }
   },
   // computed: {

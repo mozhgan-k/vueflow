@@ -37,7 +37,50 @@ export default defineComponent({
   },
   data () {
     return {
-      elements: []
+      elements: [
+        {
+          id: '1',
+          type: 'custom',
+          data: { color: this.bgColor },
+          position: { x: 0, y: 50 }
+        },
+        {
+          id: '2',
+          type: 'output',
+          label: this.outputNameLabel,
+          position: { x: 350, y: 25 },
+          targetPosition: Position.Left
+        },
+        {
+          id: '3',
+          type: 'output',
+          label: this.outputColorLabel,
+          position: { x: 350, y: 200 },
+          targetPosition: Position.Left
+        },
+        {
+          id: 'e1a-2',
+          source: '1',
+          sourceHandle: 'a',
+          target: '2',
+          animated: true,
+          style: () => ({
+            stroke: this.bgColor.value,
+            filter: 'invert(100%)'
+          })
+        },
+        {
+          id: 'e1b-3',
+          source: '1',
+          sourceHandle: 'b',
+          target: '3',
+          animated: true,
+          style: () => ({
+            stroke: this.bgColor.value,
+            filter: 'invert(100%)'
+          })
+        }
+      ]
     }
   },
   setup () {
@@ -75,52 +118,6 @@ export default defineComponent({
       outputNameLabel,
       outputColorLabel
     }
-  },
-  mounted () {
-    this.elements = [
-      {
-        id: '1',
-        type: 'custom',
-        data: { color: this.bgColor },
-        position: { x: 0, y: 50 }
-      },
-      {
-        id: '2',
-        type: 'output',
-        label: this.outputNameLabel,
-        position: { x: 350, y: 25 },
-        targetPosition: Position.Left
-      },
-      {
-        id: '3',
-        type: 'output',
-        label: this.outputColorLabel,
-        position: { x: 350, y: 200 },
-        targetPosition: Position.Left
-      },
-      {
-        id: 'e1a-2',
-        source: '1',
-        sourceHandle: 'a',
-        target: '2',
-        animated: true,
-        style: () => ({
-          stroke: this.bgColor.value,
-          filter: 'invert(100%)'
-        })
-      },
-      {
-        id: 'e1b-3',
-        source: '1',
-        sourceHandle: 'b',
-        target: '3',
-        animated: true,
-        style: () => ({
-          stroke: this.bgColor.value,
-          filter: 'invert(100%)'
-        })
-      }
-    ]
   },
   methods: {
     onChange (color) {

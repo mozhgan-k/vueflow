@@ -55,7 +55,6 @@ export default {
       top: 'auto'
     }))
     const selectedColor = computed(() => {
-      debugger
       return colors.value.find((color) => color.value === color.data.color)
     })
     const onSelect = (color) => {

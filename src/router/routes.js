@@ -5,7 +5,8 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/IndexPage.vue') },
-      { path: '/emptyFlow', component: () => import('pages/emptyFlow') }
+      { path: '/emptyFlow', component: () => import('pages/emptyFlow') },
+      { path: '/dragDrop', component: () => import('pages/dragDrop') }
     ]
   },
 

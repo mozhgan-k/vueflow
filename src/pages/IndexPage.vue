@@ -13,7 +13,9 @@
         :default-zoom="1.5"
         :fit-view-on-init="true"
       >
-          <CustomNode @change="onChange" @gradient="onGradient" :data="elements"/>
+        <template #node-custom="props">
+          <CustomNode v-bind="props" @change="onChange" @gradient="onGradient" :data="elements"/>
+        </template>
 <!--        <MiniMap :node-stroke-color="nodeStroke" :node-color="nodeColor"/>-->
       </VueFlow>
     </div>

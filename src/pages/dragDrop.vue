@@ -4,14 +4,16 @@
       <dragableComponent/>
     </div>
     <div class="dndflow" @drop="onDrop" style="background: #ccc">
-      <VueFlow @dragover="onDragOver">
+      <VueFlow class="customnodeflow" @dragover="onDragOver">
         <template #connection-line="props">
           <CustomEdge v-bind="props" />
         </template>
         <template #edge-custom2="props">
           <CustomEdge2 v-bind="props" />
         </template>
-        <customNode/>
+        <template #node-custom="props">
+          <customNode v-bind="props"/>
+        </template>
       </VueFlow>
     </div>
   </div>
@@ -71,3 +73,10 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.customnodeflow .vue-flow__node-custom {
+  background: transparent;
+  border: none;
+}
+</style>

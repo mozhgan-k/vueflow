@@ -1,15 +1,18 @@
 <template>
   <div class="custom-component ">
-    <q-card class="q-pa-md flex flex-center items-center" flat >
+    <div class="flex flex-center items-center">
+      <div class="img-container">
+        <img style="width: 100%; height: 100%" src="../assets/database.png">
+      </div>
       <span>test</span>
-      <Handle id="a" type="source" :position="position.Right" :style="sourceHandleStyleA"/>
-      <Handle id="b" type="source" :position="position.Right" :style="sourceHandleStyleB"/>
-    </q-card>
+    </div>
+<!--    <Handle id="a" type="source" :position="position.Bottom" :style="sourceHandleStyleA"/>-->
+<!--    <Handle id="b" type="source" :position="position.Right" :style="sourceHandleStyleB"/>-->
   </div>
 </template>
 
 <script>
-import { Handle, Position } from '@braks/vue-flow'
+import { Position } from '@braks/vue-flow'
 import { computed } from 'vue'
 export default {
   props: {
@@ -18,19 +21,20 @@ export default {
       required: true
     }
   },
-  components: {
-    Handle
-  },
+  // components: {
+  //   Handle
+  // },
   setup (props, { emit }) {
     const position = Position
     const sourceHandleStyleA = computed(() => ({
       filter: 'invert(100%)',
-      top: '50px'
+      bottom: '1px'
     }))
     const sourceHandleStyleB = computed(() => ({
       filter: 'invert(100%)',
-      bottom: '10px',
-      top: 'auto'
+      bottom: '15px',
+      top: 'auto',
+      right: '0'
     }))
     return {
       sourceHandleStyleB,
@@ -40,3 +44,13 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.img-container{
+  width: 50px;
+  height: 50px;
+  background: #fff;
+  border-radius: 50%;
+  padding: 8px;
+}
+</style>

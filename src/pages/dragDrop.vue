@@ -4,8 +4,8 @@
       <dragableComponent/>
     </div>
     <div class="dndflow" @drop="onDrop" style="background: #ccc">
-      <VueFlow class="customnodeflow" @dragover="onDragOver">
-        <template #edge-custom="props">
+      <VueFlow @dragover="onDragOver">
+        <template #connection-line="props">
           <CustomEdge v-bind="props" />
         </template>
         <template #edge-custom2="props">

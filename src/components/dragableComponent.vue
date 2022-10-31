@@ -17,7 +17,7 @@
           <span class="q-mx-sm">Read list</span>
         </div>
       </q-item>
-      <q-item @dragstart="onDragStart($event, 'output')" :draggable="true">
+      <q-item @dragstart="onDragStart($event, 'custom2')" :draggable="true">
         <div class="flex items-center">
           <div style="width: 20px; height: 20px">
             <img style="width: 100%; height: 100%" src="../assets/database.png">

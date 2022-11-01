@@ -1432,6 +1432,11 @@
   dependencies:
     "@types/node" "*"
 
+"@vue-flow/additional-components@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@vue-flow/additional-components/-/additional-components-1.1.0.tgz#744ff2ce35be1af9109462e9973118366b53dc66"
+  integrity sha512-uWz/xieBI80UwcIolnFkGojgKZwr46nspLMpz1oZuzCN09kqd7ZK2VgZSS04r7j8aWNNanioun2AvDXr+vg8vg==
+
 "@vue-flow/core@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@vue-flow/core/-/core-1.0.0.tgz#b342863b4b96635d6e914c6c57141e37ba4ebbde"

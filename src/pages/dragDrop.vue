@@ -1,15 +1,15 @@
 <template>
-  <div style="height: 200px">
-    <div id="demo" @contextmenu.prevent="openMenu($event)">
-      <h1 class="center">
-        Right click anywhere to bring up a menu.
-      </h1>
-      <ul id="right-click-menu" tabindex="-1" @blur="closeMenu">
-        <li>First list item</li>
-        <li>Second list item</li>
-      </ul>
-    </div>
-  </div>
+<!--  <div style="height: 200px">-->
+<!--    <div id="demo" @contextmenu.prevent="openMenu($event)">-->
+<!--      <h1 class="center">-->
+<!--        Right click anywhere to bring up a menu.-->
+<!--      </h1>-->
+<!--      <ul id="right-click-menu" tabindex="-1" @blur="closeMenu">-->
+<!--        <li>First list item</li>-->
+<!--        <li>Second list item</li>-->
+<!--      </ul>-->
+<!--    </div>-->
+<!--  </div>-->
   <div style=" display: grid; grid-template-columns: 200px 600px; height: 600px">
     <div>
       <dragableComponent/>

@@ -6,13 +6,13 @@
       </div>
       <span>test</span>
     </div>
-    <!--    <Handle id="a" type="source" :position="position.Bottom" :style="sourceHandleStyleA"/>-->
+        <Handle id="a" type="source" :position="position.Bottom" :style="sourceHandleStyleA"/>
     <!--    <Handle id="b" type="source" :position="position.Right" :style="sourceHandleStyleB"/>-->
   </div>
 </template>
 
 <script>
-import { Position } from '@braks/vue-flow'
+import { Handle, Position } from '@braks/vue-flow'
 import { computed } from 'vue'
 
 export default {
@@ -22,9 +22,9 @@ export default {
       required: true
     }
   },
-  // components: {
-  //   Handle
-  // },
+  components: {
+    Handle
+  },
   setup (props, { emit }) {
     const position = Position
     const sourceHandleStyleA = computed(() => ({

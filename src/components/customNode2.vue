@@ -4,9 +4,9 @@
       <div class="img-container">
         <img style="width: 100%; height: 100%" src="../assets/email.png">
       </div>
-      <span>test</span>
+      <span style="font-size: 12px">test</span>
     </div>
-        <Handle id="a" type="source" :position="position.Bottom" :style="sourceHandleStyleA"/>
+        <Handle id="a" type="source" :position="position.Top" :style="sourceHandleStyleA"/>
     <!--    <Handle id="b" type="source" :position="position.Right" :style="sourceHandleStyleB"/>-->
   </div>
 </template>

@@ -5,7 +5,6 @@ import { h, ref } from 'vue'
 import CustomEdge from 'components/customEdge'
 // import CustomEdge2 from 'components/customEdge2'
 import CustomEdgeLabel from 'components/customEdgeLabel'
-
 const elements = ref([
   { id: '1', type: 'input', label: 'Start', position: { x: 50, y: 0 }, style: { borderColor: '#10b981' } },
   { id: '2', label: 'Node 2', position: { x: 150, y: 100 } },
@@ -18,7 +17,7 @@ const elements = ref([
   { id: '7', type: 'output', label: 'Output 7', position: { x: 50, y: 600 } },
   { id: '8', type: 'output', label: 'Output 8', position: { x: 350, y: 600 } },
   { id: '9', type: 'output', label: 'Output 9', position: { x: 550, y: 400 } },
-  { id: 'e1-2', source: '1', target: '2', label: 'bezier edge (default)', class: 'normal-edge' },
+  { id: 'e1-2', source: '1', target: '2' },
   { id: 'e2-2a', source: '2', target: '2a', type: 'smoothstep', label: 'smoothstep edge' },
   { id: 'e2-3', source: '2', target: '3', type: 'step', label: 'step edge' },
   { id: 'e3-4', source: '3', target: '4', type: 'straight', label: 'straight edge' },
@@ -35,6 +34,7 @@ const elements = ref([
     source: '4',
     target: '5',
     animated: true,
+    labelBgPadding: [8, 4],
     label: () => h(CustomEdgeLabel, { label: 'my label' }),
     labelStyle: { fill: '#eae0de', fontWeight: 700 },
     labelBgStyle: { fill: '#ab2b27' },
@@ -63,6 +63,7 @@ const elements = ref([
     source: '5',
     target: '8',
     label: 'test4',
+    labelBgPadding: [8, 4],
     labelBgBorderRadius: 4,
     labelBgStyle: { fill: '#52f1c7', color: '#fff', fillOpacity: 0.7 }
   },

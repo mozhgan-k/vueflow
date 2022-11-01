@@ -14,19 +14,13 @@
     <div>
       <dragableComponent/>
     </div>
-    <div class="dndflow" @drop="onDrop" style="background: #ccc">
+    <div class="dndflow" @drop="onDrop" style="background: #e1e1e1">
       <VueFlow class="customnodeflow" @dragover="onDragOver">
-        <template #connection-line="props">
-          <CustomEdge v-bind="props" />
-        </template>
-        <template #edge-custom2="props">
-          <CustomEdge2 v-bind="props" />
-        </template>
         <template #node-custom="props">
-          <customNode v-bind="props"/>
+          <customNode :data="props"/>
         </template>
         <template #node-custom2="props">
-          <customNode2 v-bind="props"/>
+          <customNode2 :data="props"/>
         </template>
       </VueFlow>
     </div>
@@ -36,18 +30,13 @@
 <script>
 import { VueFlow, useVueFlow } from '@vue-flow/core'
 import dragableComponent from 'components/dragableComponent'
-import CustomEdge from 'components/customEdge'
-import CustomEdge2 from 'components/customEdge2'
-import CustomEdgeLabel from 'components/customEdgeLabel'
 import customNode from 'components/customNode1'
 import customNode2 from 'components/customNode2'
-import { h, nextTick } from 'vue'
+import { nextTick } from 'vue'
 export default {
   components: {
     dragableComponent,
     VueFlow,
-    CustomEdge,
-    CustomEdge2,
     customNode,
     customNode2
   },
@@ -64,9 +53,11 @@ export default {
         {
           id: '1',
           type: 'custom',
-          position: { x: 250, y: 25 },
-          label: () => h(CustomEdgeLabel, { label: 'custom label text' })
+          position: { x: 250, y: 25 }
         }
+      ],
+      edges: [
+        { id: 'e1-2', source: '1', target: '2' }
       ]
     })
     const onDragOver = (event) => {
